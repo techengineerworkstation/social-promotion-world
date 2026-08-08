@@ -9,5 +9,28 @@ if (!supabaseUrl || !supabaseAnonKey) {
 
 export const supabase = createClient(
   supabaseUrl || 'https://placeholder.supabase.co',
-  supabaseAnonKey || 'placeholder-key'
+  supabaseAnonKey || 'placeholder-key',
+  {
+    global: {
+      headers: {
+        'Cache-Control': 'no-cache',
+      },
+    },
+    realtime: {
+      params: {
+        eventsPerSecond: 2,
+      },
+    },
+  }
 )
+
+export const CACHE_VERSION = 'v1'
+
+export function getCacheKey(key) {
+  return `${CACHE_VERSION}:${key}`
+}
+
+export function clearCache() {
+  const keys = Object.keys(localStorage).filter(k => k.startsWith('spw_cache_'))
+  keys.forEach(k => localStorage.removeItem(k))
+}

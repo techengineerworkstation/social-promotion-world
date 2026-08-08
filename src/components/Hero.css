@@ -16,38 +16,38 @@
 .gradient-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  filter: blur(60px);
   will-change: transform;
 }
 
 .orb-1 {
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
   background: linear-gradient(135deg, var(--primary), var(--afro-terracotta));
-  top: -150px;
-  right: -80px;
-  opacity: 0.25;
-  animation: floatSlow 12s ease-in-out infinite;
+  top: -120px;
+  right: -60px;
+  opacity: 0.2;
+  animation: floatSlow 10s ease-in-out infinite;
 }
 
 .orb-2 {
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
   background: linear-gradient(135deg, var(--warm-gold), var(--secondary));
-  bottom: -80px;
-  left: -80px;
-  opacity: 0.2;
-  animation: floatSlow 15s ease-in-out infinite reverse;
+  bottom: -60px;
+  left: -60px;
+  opacity: 0.15;
+  animation: floatSlow 12s ease-in-out infinite reverse;
 }
 
 .orb-3 {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   background: linear-gradient(135deg, var(--cream), var(--accent));
   top: 40%;
   left: 60%;
-  opacity: 0.15;
-  animation: floatSlow 18s ease-in-out infinite;
+  opacity: 0.1;
+  animation: floatSlow 14s ease-in-out infinite;
 }
 
 @keyframes floatSlow {
@@ -57,7 +57,7 @@
 
 .hero .container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .hero-content {
@@ -69,12 +69,12 @@
 .badge {
   display: inline-block;
   padding: 8px 18px;
-  background: rgba(212, 168, 83, 0.12);
-  border: 1px solid rgba(212, 168, 83, 0.25);
+  background: rgba(212, 168, 83, 0.15);
+  border: 1px solid rgba(212, 168, 83, 0.3);
   border-radius: 50px;
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--warm-gold);
+  color: var(--warm-brown);
   margin-bottom: 24px;
 }
 
@@ -84,10 +84,11 @@
   line-height: 1.1;
   margin-bottom: 24px;
   letter-spacing: -0.02em;
+  color: var(--gray-1);
 }
 
 .gradient-text {
-  background: linear-gradient(135deg, var(--warm-gold), var(--afro-terracotta), var(--secondary));
+  background: linear-gradient(135deg, var(--primary), var(--afro-terracotta), var(--secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -95,7 +96,7 @@
 
 .hero-subtitle {
   font-size: 1.2rem;
-  color: var(--gray-4);
+  color: var(--gray-5);
   margin-bottom: 40px;
   max-width: 600px;
   margin-left: auto;
@@ -123,7 +124,7 @@
   display: block;
   font-size: 2rem;
   font-weight: 800;
-  color: var(--cream);
+  color: var(--gray-1);
 }
 
 .stat-label {

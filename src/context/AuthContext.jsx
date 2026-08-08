@@ -74,10 +74,14 @@ export function AuthProvider({ children }) {
     if (!user) return
     const { error } = await supabase
       .from('profiles')
-      .update({ balance: newBalance })
+      .update({ balance: newBalance, updated_at: new Date().toISOString() })
       .eq('id', user.id)
     if (error) throw error
     setProfile(prev => ({ ...prev, balance: newBalance }))
+  }
+
+  const refreshProfile = async () => {
+    if (user) await fetchProfile(user.id)
   }
 
   const value = {
@@ -89,6 +93,7 @@ export function AuthProvider({ children }) {
     signOut,
     updateBalance,
     fetchProfile,
+    refreshProfile,
   }
 
   return (
