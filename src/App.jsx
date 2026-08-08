@@ -16,6 +16,7 @@ import Footer from './components/Footer'
 import Modal from './components/Modal'
 import AdminLogin from './components/AdminLogin'
 import AdminDashboard from './components/AdminDashboard'
+import RecentPurchases from './components/RecentPurchases'
 import './App.css'
 
 const APP_VERSION = '1.0.2'
@@ -94,6 +95,7 @@ function AppContent() {
       <Header onOpenModal={openModal} />
       <main>
         <Hero onOpenModal={openModal} />
+        <RecentPurchases />
         <Services />
         <ImageGallery />
         <Pricing />

@@ -47,7 +47,7 @@
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
   flex-wrap: wrap;
 }
 
@@ -65,6 +65,18 @@
   font-family: inherit;
 }
 
+.tab-with-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tab-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
 .tab-btn:hover {
   background: rgba(255, 255, 255, 0.08);
   color: var(--white);
@@ -74,6 +86,26 @@
   background: var(--primary);
   border-color: var(--primary);
   color: var(--white);
+}
+
+.platform-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.platform-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--primary);
+}
+
+.platform-header h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
 }
 
 .pricing-table-wrapper {
@@ -144,7 +176,6 @@
   white-space: nowrap;
 }
 
-/* Order Form */
 .order-form {
   max-width: 600px;
   margin: 0 auto;
@@ -159,7 +190,6 @@
   padding: 0;
   margin-bottom: 24px;
   font-family: inherit;
-  transition: color 0.15s ease;
 }
 
 .back-btn:hover {
@@ -210,6 +240,12 @@
   background: rgba(245, 158, 11, 0.1);
   color: var(--warning);
   border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.meta-badge.min {
+  background: rgba(148, 163, 184, 0.1);
+  color: var(--gray-3);
+  border: 1px solid rgba(148, 163, 184, 0.2);
 }
 
 .order-form form {
@@ -274,8 +310,22 @@
   color: var(--success);
 }
 
+.guest-note {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--gray-5);
+}
+
+.guest-note a {
+  color: var(--primary-light);
+  text-decoration: underline;
+}
+
 @media (max-width: 640px) {
   .pricing-tabs { gap: 6px; }
   .tab-btn { padding: 8px 14px; font-size: 0.8rem; }
+  .tab-icon { width: 14px; height: 14px; }
   .order-form form { padding: 20px; }
+  .platform-header h3 { font-size: 1.1rem; }
 }

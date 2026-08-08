@@ -1,0 +1,121 @@
+.recent-purchases {
+  padding: 16px 0;
+  background: rgba(0, 0, 0, 0.03);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.purchases-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #059669;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.purchases-marquee {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.purchases-marquee::before,
+.purchases-marquee::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.purchases-marquee::before {
+  left: 0;
+  background: linear-gradient(to right, var(--silver-light), transparent);
+}
+
+.purchases-marquee::after {
+  right: 0;
+  background: linear-gradient(to left, var(--silver-light), transparent);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 32px;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.purchase-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  white-space: nowrap;
+  font-size: 0.85rem;
+}
+
+.purchase-platform {
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.purchase-service {
+  color: var(--gray-1);
+  font-weight: 500;
+}
+
+.purchase-qty {
+  color: var(--gray-5);
+  font-size: 0.8rem;
+}
+
+.purchase-user {
+  color: var(--gray-4);
+  font-size: 0.8rem;
+}
+
+.purchase-time {
+  color: var(--gray-5);
+  font-size: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .recent-purchases { gap: 8px; padding: 12px 0; }
+  .purchases-label { padding: 4px 10px; font-size: 0.75rem; }
+  .marquee-track { gap: 20px; }
+}
