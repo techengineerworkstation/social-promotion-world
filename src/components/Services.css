@@ -1,0 +1,241 @@
+.services {
+  padding: 100px 0;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.service-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: var(--shadow-lg);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.service-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.service-card > p {
+  color: var(--gray-4);
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+.service-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.service-features li {
+  font-size: 0.85rem;
+  color: var(--gray-3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.service-features .check {
+  color: var(--success);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.view-details {
+  color: var(--primary-light);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.service-card:hover .view-details {
+  color: var(--primary);
+}
+
+.service-detail-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.service-detail {
+  background: var(--dark-2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.detail-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--gray-4);
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.detail-close:hover {
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.detail-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.detail-header h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.detail-price {
+  color: var(--success);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.detail-overview {
+  color: var(--gray-3);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.detail-meta {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meta-label {
+  color: var(--gray-5);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.meta-value {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.service-detail h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.detail-popular {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.popular-tag {
+  padding: 6px 14px;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 50px;
+  font-size: 0.85rem;
+  color: var(--primary-light);
+}
+
+@media (max-width: 640px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-meta {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .service-detail {
+    padding: 24px;
+  }
+}
