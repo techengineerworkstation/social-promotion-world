@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import { useAuth } from '../context/AuthContext'
 
-const PAYSTACK_PUBLIC_KEY = 'pk_live_YOUR_PUBLIC_KEY'
+const PAYSTACK_PUBLIC_KEY = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY
 
 export function usePaystack() {
   const { user, profile, updateBalance } = useAuth()
@@ -9,6 +9,11 @@ export function usePaystack() {
   const initializePayment = useCallback((amountInNaira, onSuccess, onError) => {
     if (!user) {
       onError?.('Please sign in to make a payment')
+      return
+    }
+
+    if (!PAYSTACK_PUBLIC_KEY || PAYSTACK_PUBLIC_KEY === 'undefined') {
+      onError?.('Payment system not configured. Contact support.')
       return
     }
 
@@ -25,18 +30,23 @@ export function usePaystack() {
         payment_type: 'Wallet Funding',
       },
       onSuccess: async (transaction) => {
-        const { data, error } = await fetch('/api/verify-payment', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ reference: transaction.reference }),
-        }).then(res => res.json())
+        try {
+          const response = await fetch('/api/verify-payment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ reference: transaction.reference }),
+          })
+          const { data } = await response.json()
 
-        if (data && data.status === 'success') {
-          const fundedAmountNaira = data.amount / 100
-          await updateBalance((profile?.balance || 0) + fundedAmountNaira)
-          onSuccess?.(transaction, fundedAmountNaira)
-        } else {
-          onError?.('Payment verification failed. Contact support.')
+          if (data && data.status === 'success') {
+            const fundedAmountNaira = data.amount / 100
+            await updateBalance((profile?.balance || 0) + fundedAmountNaira)
+            onSuccess?.(transaction, fundedAmountNaira)
+          } else {
+            onError?.('Payment verification failed. Contact support.')
+          }
+        } catch {
+          onError?.('Network error. Contact support.')
         }
       },
       onCancel: () => {
