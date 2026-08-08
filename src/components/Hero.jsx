@@ -1,47 +1,14 @@
-import React, { useState } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { Float } from '@react-three/drei'
+import React from 'react'
 import { motion } from 'framer-motion'
 import './Hero.css'
-
-function FloatingShape({ position, color, scale = 1, speed = 1 }) {
-  const mesh = useRef()
-
-  useFrame((state) => {
-    if (mesh.current) {
-      mesh.current.rotation.x = state.clock.elapsedTime * 0.2 * speed
-      mesh.current.rotation.y = state.clock.elapsedTime * 0.3 * speed
-    }
-  })
-
-  return (
-    <Float speed={speed} rotationIntensity={0.3} floatIntensity={0.5}>
-      <mesh ref={mesh} position={position} scale={scale}>
-        <icosahedronGeometry args={[1, 1]} />
-        <meshStandardMaterial
-          color={color}
-          roughness={0.2}
-          metalness={0.8}
-          flatShading
-        />
-      </mesh>
-    </Float>
-  )
-}
 
 export default function Hero({ onOpenModal }) {
   return (
     <section className="hero">
-      <div className="hero-canvas">
-        <Canvas camera={{ position: [0, 0, 8], fov: 50 }} dpr={[1, 1.5]}>
-          <ambientLight intensity={0.4} />
-          <pointLight position={[10, 10, 10]} intensity={0.8} color="#6366f1" />
-          <pointLight position={[-10, -5, -5]} intensity={0.4} color="#ec4899" />
-          <FloatingShape position={[-3, 1, -2]} color="#6366f1" scale={0.8} speed={0.8} />
-          <FloatingShape position={[3, -1, -1]} color="#ec4899" scale={0.5} speed={1.2} />
-          <FloatingShape position={[2, 2, -4]} color="#06b6d4" scale={0.3} speed={1.5} />
-          <fog attach="fog" args={['#0f172a', 8, 20]} />
-        </Canvas>
+      <div className="hero-bg">
+        <div className="gradient-orb orb-1"></div>
+        <div className="gradient-orb orb-2"></div>
+        <div className="gradient-orb orb-3"></div>
       </div>
 
       <div className="container">
@@ -57,7 +24,7 @@ export default function Hero({ onOpenModal }) {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.3 }}
           >
-            Trusted by 150,000+ Users Worldwide
+            Trusted by 188,888+ Users Worldwide
           </motion.div>
 
           <motion.h1

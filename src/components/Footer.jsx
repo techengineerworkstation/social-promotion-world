@@ -18,7 +18,7 @@ export default function Footer() {
               <span className="logo-icon">&#9650;</span>
               <span className="logo-text">Social<span className="highlight">Promotion</span> World</span>
             </a>
-            <p>The cheapest and most trusted SMM panel for social media growth. Trusted by 150,000+ users worldwide.</p>
+            <p>The cheapest and most trusted SMM panel for social media growth. Trusted by 188,888+ users worldwide.</p>
           </div>
           <div className="footer-links">
             <h4>Quick Links</h4>

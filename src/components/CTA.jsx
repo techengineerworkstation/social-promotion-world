@@ -14,7 +14,7 @@ export default function CTA({ onOpenModal }) {
           transition={{ duration: 0.4 }}
         >
           <h2>Ready to Grow Your Social Media?</h2>
-          <p>Join 150,000+ users who trust Social Promotion World. Start today with as little as ₦120.</p>
+          <p>Join 188,888+ users who trust Social Promotion World. Start today with as little as ₦120.</p>
           <button className="btn btn-white btn-lg" onClick={() => onOpenModal('signup')}>
             Create Free Account
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>

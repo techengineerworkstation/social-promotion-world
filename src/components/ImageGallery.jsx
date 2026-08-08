@@ -36,7 +36,7 @@ const galleryImages = [
 ]
 
 const stats = [
-  { value: '150K+', label: 'Active Users' },
+  { value: '188K+', label: 'Active Users' },
   { label: 'Orders Delivered', value: '5 Crore+' },
   { value: '10K+', label: 'Services' },
   { value: '24/7', label: 'Support' },

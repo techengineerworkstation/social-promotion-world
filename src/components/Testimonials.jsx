@@ -35,7 +35,7 @@ export default function Testimonials() {
           transition={{ duration: 0.4 }}
         >
           <span className="section-tag">Testimonials</span>
-          <h2>Loved by 150,000+ Users</h2>
+          <h2>Loved by 188,888+ Users</h2>
           <p>Real reviews from agencies, creators, and resellers worldwide.</p>
         </motion.div>
 
