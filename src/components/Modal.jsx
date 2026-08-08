@@ -4,14 +4,33 @@ import { useAuth } from '../context/AuthContext'
 import { usePaystack } from '../hooks/usePaystack'
 import './Modal.css'
 
+const currencies = [
+  { code: 'NGN', symbol: '₦', label: 'NGN', min: 100 },
+  { code: 'USD', symbol: '$', label: 'USD', min: 1 },
+  { code: 'GHS', symbol: 'GH₵', label: 'GHS', min: 1 },
+  { code: 'KES', symbol: 'KSh', label: 'KES', min: 10 },
+  { code: 'ZAR', symbol: 'R', label: 'ZAR', min: 1 },
+]
+
+const quickAmounts = {
+  NGN: [500, 1000, 2000, 5000, 10000],
+  USD: [5, 10, 25, 50, 100],
+  GHS: [50, 100, 200, 500, 1000],
+  KES: [500, 1000, 2500, 5000, 10000],
+  ZAR: [50, 100, 250, 500, 1000],
+}
+
 export default function Modal({ type: initialType, onClose }) {
   const [modalType, setModalType] = useState(initialType)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [fundAmount, setFundAmount] = useState('')
   const [showFunding, setShowFunding] = useState(false)
+  const [currency, setCurrency] = useState('NGN')
   const { signIn, signUp, user, profile, signOut } = useAuth()
   const { initializePayment } = usePaystack()
+
+  const currentCurrency = currencies.find(c => c.code === currency)
 
   const handleLogin = async (e) => {
     e.preventDefault()
@@ -34,11 +53,7 @@ export default function Modal({ type: initialType, onClose }) {
     setLoading(true)
     try {
       const formData = new FormData(e.target)
-      await signUp(
-        formData.get('email'),
-        formData.get('password'),
-        formData.get('name')
-      )
+      await signUp(formData.get('email'), formData.get('password'), formData.get('name'))
       setShowFunding(true)
     } catch (err) {
       setError(err.message)
@@ -49,16 +64,17 @@ export default function Modal({ type: initialType, onClose }) {
 
   const handleFundWallet = () => {
     const amount = parseFloat(fundAmount)
-    if (!amount || amount < 100) {
-      setError('Minimum funding amount is ₦100')
+    if (!amount || amount < currentCurrency.min) {
+      setError(`Minimum funding amount is ${currentCurrency.symbol}${currentCurrency.min}`)
       return
     }
     setError('')
     initializePayment(
       amount,
-      (transaction, fundedAmount) => {
+      currency,
+      (transaction, fundedAmount, paidCurrency) => {
         setError('')
-        alert(`Wallet funded successfully with ₦${fundedAmount.toLocaleString()}!`)
+        alert(`Wallet funded successfully with ${currencies.find(c => c.code === paidCurrency)?.symbol}${fundedAmount.toLocaleString()}!`)
         setFundAmount('')
         setShowFunding(false)
       },
@@ -132,32 +148,50 @@ export default function Modal({ type: initialType, onClose }) {
           <button className="modal-close" onClick={onClose}>&times;</button>
           <div className="modal-content">
             <h2>Fund Your Wallet</h2>
-            <p>Add money to your account via Paystack</p>
+            <p>Pay securely via Paystack in your preferred currency</p>
             {error && <div className="error-message">{error}</div>}
+
             <div className="form-group">
-              <label>Amount (₦)</label>
+              <label>Currency</label>
+              <div className="currency-toggle">
+                {currencies.map((curr) => (
+                  <button
+                    key={curr.code}
+                    className={`currency-btn ${currency === curr.code ? 'active' : ''}`}
+                    onClick={() => { setCurrency(curr.code); setFundAmount('') }}
+                  >
+                    {curr.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label>Amount ({currency})</label>
               <input
                 type="number"
-                min="100"
-                step="100"
+                min={currentCurrency.min}
+                step={currentCurrency.min}
                 value={fundAmount}
                 onChange={(e) => setFundAmount(e.target.value)}
-                placeholder="Enter amount (min ₦100)"
+                placeholder={`Enter amount (min ${currentCurrency.symbol}${currentCurrency.min})`}
               />
             </div>
+
             <div className="quick-amounts">
-              {[500, 1000, 2000, 5000, 10000].map(amt => (
+              {quickAmounts[currency].map(amt => (
                 <button
                   key={amt}
                   className="quick-amount-btn"
                   onClick={() => setFundAmount(amt.toString())}
                 >
-                  ₦{amt.toLocaleString()}
+                  {currentCurrency.symbol}{amt.toLocaleString()}
                 </button>
               ))}
             </div>
+
             <button className="btn btn-primary btn-block" onClick={handleFundWallet}>
-              Pay ₦{parseFloat(fundAmount || 0).toLocaleString()} with Paystack
+              Pay {currentCurrency.symbol}{parseFloat(fundAmount || 0).toLocaleString()} with Paystack
             </button>
             <button className="btn btn-ghost btn-block" onClick={() => setShowFunding(false)}>
               Back to Dashboard
