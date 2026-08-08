@@ -20,19 +20,20 @@
 
 .currency-btn {
   padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: 8px;
   color: var(--gray-4);
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
+  backdrop-filter: blur(8px);
   font-family: inherit;
 }
 
 .currency-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
   color: var(--white);
 }
 
@@ -52,14 +53,15 @@
 
 .tab-btn {
   padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: 50px;
   color: var(--gray-4);
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
+  backdrop-filter: blur(8px);
   font-family: inherit;
 }
 
@@ -77,20 +79,22 @@
 .pricing-table-wrapper {
   overflow-x: auto;
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  background: var(--glass-bg);
 }
 
 .pricing-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 700px;
+  min-width: 800px;
 }
 
 .pricing-table th {
-  padding: 16px 20px;
+  padding: 14px 16px;
   text-align: left;
-  background: rgba(99, 102, 241, 0.1);
-  font-size: 0.85rem;
+  background: rgba(99, 102, 241, 0.08);
+  font-size: 0.8rem;
   font-weight: 600;
   color: var(--primary-light);
   text-transform: uppercase;
@@ -98,33 +102,180 @@
 }
 
 .pricing-table td {
-  padding: 16px 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
-  font-size: 0.95rem;
+  padding: 14px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  font-size: 0.9rem;
+  vertical-align: top;
 }
 
 .pricing-table tr {
-  transition: background 0.15s ease;
+  transition: background 0.1s ease;
 }
 
 .pricing-table tr:hover td {
   background: rgba(255, 255, 255, 0.02);
 }
 
+.pricing-table td.desc {
+  color: var(--gray-5);
+  font-size: 0.85rem;
+  max-width: 250px;
+}
+
 .pricing-table .price {
   color: var(--success);
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .pricing-table .delivery {
   color: var(--accent);
+  font-size: 0.85rem;
 }
 
 .pricing-table .guarantee {
   color: var(--warning);
+  font-size: 0.85rem;
+}
+
+.btn-sm {
+  padding: 6px 16px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+/* Order Form */
+.order-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: var(--primary-light);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 24px;
+  font-family: inherit;
+  transition: color 0.15s ease;
+}
+
+.back-btn:hover {
+  color: var(--white);
+}
+
+.order-service-info {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 24px;
+  backdrop-filter: blur(12px);
+}
+
+.order-service-info h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.order-service-info p {
+  color: var(--gray-4);
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.order-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.meta-badge {
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.meta-badge.delivery {
+  background: rgba(6, 182, 212, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+}
+
+.meta-badge.guarantee {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--warning);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.order-form form {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  backdrop-filter: blur(12px);
+}
+
+.quantity-presets {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.preset-btn {
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: var(--gray-4);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.preset-btn:hover {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: var(--primary);
+  color: var(--white);
+}
+
+.order-summary {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin: 20px 0;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.9rem;
+  color: var(--gray-4);
+}
+
+.summary-row.total {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 8px;
+  padding-top: 12px;
+  font-weight: 700;
+  color: var(--white);
+  font-size: 1.1rem;
+}
+
+.summary-row.total span:last-child {
+  color: var(--success);
 }
 
 @media (max-width: 640px) {
   .pricing-tabs { gap: 6px; }
   .tab-btn { padding: 8px 14px; font-size: 0.8rem; }
+  .order-form form { padding: 20px; }
 }
