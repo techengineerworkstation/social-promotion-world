@@ -4,34 +4,44 @@ import './ImageGallery.css'
 
 const galleryImages = [
   {
-    src: 'https://images.pexels.com/photos/11085414/pexels-photo-11085414.jpeg?auto=compress&cs=tinysrgb&w=600',
-    alt: 'African entrepreneur using smartphone for social media marketing',
-    caption: 'Grow Your Brand Online',
+    src: 'https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=600',
+    alt: 'Black woman working on laptop — digital entrepreneur',
+    caption: 'Empowering Digital Creators',
   },
   {
-    src: 'https://images.pexels.com/photos/2381463/pexels-photo-2381463.jpeg?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Young African creators collaborating on content',
-    caption: 'Content That Connects',
+    src: 'https://images.pexels.com/photos/3182833/pexels-photo-3182833.jpeg?auto=compress&cs=tinysrgb&w=600',
+    alt: 'Diverse team collaborating in co-working space',
+    caption: 'Built for Global Teams',
+  },
+  {
+    src: 'https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=600',
+    alt: 'African professionals in business meeting',
+    caption: 'Trusted Across Africa',
+  },
+  {
+    src: 'https://images.pexels.com/photos/11085414/pexels-photo-11085414.jpeg?auto=compress&cs=tinysrgb&w=600',
+    alt: 'Young African entrepreneur on smartphone',
+    caption: 'Mobile-First Growth',
+  },
+  {
+    src: 'https://images.pexels.com/photos/3861961/pexels-photo-3861961.jpeg?auto=compress&cs=tinysrgb&w=600',
+    alt: 'Social media content creation',
+    caption: 'Content That Converts',
   },
   {
     src: 'https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Social media marketing analytics dashboard',
-    caption: 'Data-Driven Growth',
+    alt: 'Analytics dashboard and data visualization',
+    caption: 'Data-Driven Results',
   },
   {
-    src: 'https://images.pexels.com/photos/4050436/pexels-photo-4050436.jpeg?auto=compress&cs=tinysrgb&w=600',
-    alt: 'African influencer creating video content',
-    caption: 'Influencer Ready',
+    src: 'https://images.pexels.com/photos/4348401/pexels-photo-4348401.jpeg?auto=compress&cs=tinysrgb&w=600',
+    alt: 'Asian digital marketer working remotely',
+    caption: 'Multi-National Reach',
   },
   {
-    src: 'https://images.pexels.com/photos/3183173/pexels-photo-3183173.jpeg?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Team collaboration on digital marketing strategy',
-    caption: 'Built for Teams',
-  },
-  {
-    src: 'https://images.pexels.com/photos/6476585/pexels-photo-6476585.jpeg?auto=compress&cs=tinysrgb&w=600',
-    alt: 'Social media engagement on mobile device',
-    caption: 'Engagement Delivered',
+    src: 'https://images.pexels.com/photos/1181690/pexels-photo-1181690.jpeg?auto=compress&cs=tinysrgb&w=600',
+    alt: 'Creative professional using tablet',
+    caption: 'Creativity Unlocked',
   },
 ]
 
@@ -44,56 +54,40 @@ const stats = [
 
 export default function ImageGallery() {
   return (
-    <section className="image-gallery-section">
+    <section className="image-gallery-section sheen">
       <div className="container">
         <motion.div
           className="section-header"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.4 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.3 }}
         >
-          <span className="section-tag">Trusted Worldwide</span>
-          <h2>Growing Brands Across Africa & Beyond</h2>
-          <p>Join thousands of creators, agencies, and businesses who trust us for their social media growth.</p>
+          <span className="section-tag">Community</span>
+          <h2>Empowering Creators Worldwide</h2>
+          <p>From Lagos to London, Nairobi to New York — join a global community of creators and agencies.</p>
         </motion.div>
 
-        <motion.div
-          className="gallery-grid"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
-          variants={{
-            hidden: {},
-            visible: {
-              transition: { staggerChildren: 0.1 }
-            }
-          }}
-        >
+        <div className="gallery-grid">
           {galleryImages.map((img, idx) => (
-            <motion.div
+            <div
               key={idx}
               className={`gallery-item ${idx === 0 ? 'large' : ''} ${idx === 3 ? 'wide' : ''}`}
-              variants={{
-                hidden: { opacity: 0, scale: 0.95 },
-                visible: { opacity: 1, scale: 1, transition: { duration: 0.4 } }
-              }}
-              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
             >
               <img src={img.src} alt={img.alt} loading="lazy" />
               <div className="gallery-overlay">
                 <span>{img.caption}</span>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         <motion.div
           className="gallery-stats"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.4 }}
+          transition={{ delay: 0.2, duration: 0.3 }}
         >
           {stats.map((stat, idx) => (
             <div key={idx} className="gallery-stat">

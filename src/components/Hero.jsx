@@ -4,7 +4,7 @@ import './Hero.css'
 
 export default function Hero({ onOpenModal }) {
   return (
-    <section className="hero">
+    <section className="hero sheen">
       <div className="hero-bg">
         <div className="gradient-orb orb-1"></div>
         <div className="gradient-orb orb-2"></div>
@@ -12,17 +12,12 @@ export default function Hero({ onOpenModal }) {
       </div>
 
       <div className="container">
-        <motion.div
-          className="hero-content"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-        >
+        <div className="hero-content">
           <motion.div
             className="badge"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.3 }}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
           >
             Trusted by 188,888+ Users Worldwide
           </motion.div>
@@ -30,25 +25,25 @@ export default function Hero({ onOpenModal }) {
           <motion.h1
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.4 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
           >
             Grow Your Social Media <span className="gradient-text">Instantly</span>
           </motion.h1>
 
           <motion.p
             className="hero-subtitle"
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35, duration: 0.4 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
           >
             The cheapest and most reliable SMM panel for Instagram, YouTube, TikTok, Facebook, Twitter/X and 10+ platforms. Real results, fast delivery, lifetime guarantee.
           </motion.p>
 
           <motion.div
             className="hero-actions"
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.4 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
           >
             <button className="btn btn-primary btn-lg" onClick={() => onOpenModal('signup')}>
               Start Growing Today
@@ -61,7 +56,7 @@ export default function Hero({ onOpenModal }) {
             className="hero-stats"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.4 }}
+            transition={{ duration: 0.4, delay: 0.4 }}
           >
             <div className="stat">
               <span className="stat-number">5 Crore+</span>
@@ -76,7 +71,7 @@ export default function Hero({ onOpenModal }) {
               <span className="stat-label">Delivery Rate</span>
             </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
