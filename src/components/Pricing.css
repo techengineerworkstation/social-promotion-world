@@ -3,6 +3,45 @@
   background: var(--dark-2);
 }
 
+.currency-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.currency-label {
+  color: var(--gray-4);
+  font-size: 0.9rem;
+  margin-right: 4px;
+}
+
+.currency-btn {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: var(--gray-4);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.currency-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+}
+
+.currency-btn.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--white);
+}
+
 .pricing-tabs {
   display: flex;
   justify-content: center;
