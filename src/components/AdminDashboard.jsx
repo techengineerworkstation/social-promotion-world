@@ -146,7 +146,7 @@ function OrdersTable() {
   }
 
   const updateOrderStatus = async (orderId, newStatus) => {
-    await supabase.from('orders').update({ status: newStatus }).eq('id', orderId')
+    await supabase.from('orders').update({ status: newStatus }).eq('id', orderId)
     fetchOrders()
   }
 
